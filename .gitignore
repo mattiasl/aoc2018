@@ -1,0 +1,6 @@
+.gradle/
+.idea/
+aoc2018.iml
+build.gradle
+build/
+out/
