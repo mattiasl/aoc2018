@@ -1,4 +1,4 @@
-package aoc.p01
+package aoc.d01
 
 import spock.lang.Shared
 import spock.lang.Specification
@@ -19,7 +19,7 @@ class Star1Test extends Specification {
     
     def "solution"() {
         given:
-            String input = this.getClass().getResource('/aoc/p01/data.txt').text
+            String input = this.getClass().getResource('/aoc/d01/data.txt').text
         expect:
             implementation.apply(input) == 529
     }

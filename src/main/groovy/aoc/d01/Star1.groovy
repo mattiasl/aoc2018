@@ -1,4 +1,4 @@
-package aoc.p01
+package aoc.d01
 
 class Star1 {
     def apply(String input) {
