@@ -1,24 +1,28 @@
 package aoc.d05
 
 class Star1 {
-    private Helper helper = new Helper()
-    
     int apply(String input) {
-        Set<String> p = helper.createPolymers()
-        boolean isDone = false
-        StringBuilder tmp = new StringBuilder().append(input)
-        
-        while (!isDone) {
-            int l = tmp.size()
-            for (int j = 0; j < tmp.size()-1; j++) {
-                String pol = tmp.substring(j, j+2)
-                if (p.contains(pol)) {
-                    tmp.replace(j, j+2, "")
-                }
+        Deque<Character> answer = new LinkedList<>()
+        for (int j = 0; j < input.size();  j++) {
+            char p = input.charAt(j)
+            
+            if (answer.size() == 0) {
+                answer.addLast(p)
+                continue
             }
-            isDone = tmp.size() == l
+            
+            Character c = answer.peekLast()
+            if (isPolymer(c.charValue(), p)) {
+                answer.removeLast()
+            } else {
+                answer.addLast(p)
+            }
         }
         
-        return tmp.size()
+        return answer.size()
+    }
+
+    boolean isPolymer(char p1, char p2) {
+        return Character.toLowerCase(p1) == Character.toLowerCase(p2) && p1 != p2
     }
 }
